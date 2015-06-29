@@ -1,0 +1,18 @@
+<link rel="import" href="../packages/polymer/polymer.html">
+<polymer-element name="inventory-item">
+  <template>
+    <div>
+      <div style="display:inline-block">
+        <input type="text" name="itsdfsdefmSel" value="olaaaa"/>
+        <input type="checkbox" name="itemSel" value="{{index}}"/>
+      </div>
+      <div style="display:inline-block; width:5cm">
+        <h2>{{item.name}}</h2>
+      </div>
+      <div style="display:inline-block">
+        ${{item.price}}
+      </div>
+    </div>
+  </template>
+  <script type="application/dart" src="inventory_item.dart"></script>
+</polymer-element>

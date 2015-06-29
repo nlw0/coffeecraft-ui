@@ -1,0 +1,16 @@
+<link rel="import" href="../packages/polymer/polymer.html">
+<link rel="import" href="inventory_item.html">
+<polymer-element name="inventory-list">
+  <template>
+    <form method="post" action="http://localhost:8080">
+      <input type="text" name="itsdfsdefmssSel" value="olaaaa"/>
+    <div>
+      <template repeat="{{ii in items | enumerate}}">
+        <inventory-item item="{{ii.value}}" index="{{ii.index.toString()}}"></inventory-item>
+      </template>
+    </div>
+      <input type="submit" value="OK"/>
+    </form>
+  </template>
+  <script type="application/dart" src="inventory_list.dart"></script>
+</polymer-element>
