@@ -12,20 +12,22 @@ class InventoryList extends PolymerElement {
 
   InventoryList.created() : super.created() {
     loadData();
-    xxx();
   }
 
+/*
   void xxx() {
     var url = "http://localhost:8080/";
+
     HttpRequest.request(url, method: 'POST', sendData: "[1,2,3]")
     .then((HttpRequest resp) {
       print(resp);
     });
-
   }
+*/
 
   void loadData() {
-    var url = "http://localhost:8080/api/102";
+    //var url = "http://localhost:8080/api/102";
+    var url = "invdata.html";
     // call the web server asynchronously
     HttpRequest.getString(url).then(onDataLoaded);
   }

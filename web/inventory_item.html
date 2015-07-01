@@ -3,7 +3,7 @@
   <template>
     <div>
       <div style="display:inline-block">
-        <input type="checkbox" name="itemSel" value="{{index}}" checked?="{{isChecked}}" />
+        <input type="checkbox" name="itemSel" value="{{index}}" checked="{{isChecked}}" />
       </div>
       <div style="display:inline-block; width:5cm">
         <h2>{{item.name}}</h2>
@@ -11,6 +11,8 @@
       <div style="display:inline-block">
         ${{item.price}}
       </div>
+      <template if="{{isChecked}}"><div>oi!</div></template>
+      <template if="{{!isChecked}}"><div>ai?</div></template>
     </div>
   </template>
   <script type="application/dart" src="inventory_item.dart"></script>
