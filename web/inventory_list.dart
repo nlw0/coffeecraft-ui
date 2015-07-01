@@ -25,20 +25,27 @@ class InventoryList extends PolymerElement {
   }
 
   void loadData() {
-    var url = "invdata.html";
+    var url = "http://localhost:8080/api/102";
     // call the web server asynchronously
     HttpRequest.getString(url).then(onDataLoaded);
   }
 
   void onDataLoaded(String responseText) {
-
     var dson = new Dartson.JSON();
-    // dson.addTransformer(new DateTimeParser(), DateTime);
 
-    List<InventoryItemDto> myCoffee = dson.decode(responseText, new InventoryItemDto(), true);
-    var cs = myCoffee.map((x) => new CoffeeItem.fromDto(x.item)).toList();
+    UserStateDto myCoffee = dson.decode(responseText, new UserStateDto());
+    for (var aa in myCoffee.inventory) {
+      print(aa.item);
+    }
+    var cs = myCoffee.inventory.map((x) => new CoffeeItem.fromDto(x.item)).toList();
     for (var cc in cs) {
       items.add(cc);
     }
+  }
+
+  doSubmit(Event e, var detail, Node target) {
+    e.preventDefault();
+
+    print("OI");
   }
 }

@@ -40,3 +40,9 @@ class InventoryItemDto {
   num index;
   CoffeeItemDto item;
 }
+
+@Entity()
+class UserStateDto {
+  num money;
+  List<InventoryItemDto> inventory;
+}

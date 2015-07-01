@@ -2,8 +2,7 @@
 <link rel="import" href="inventory_item.html">
 <polymer-element name="inventory-list">
   <template>
-    <form method="post" action="http://localhost:8080">
-      <input type="text" name="itsdfsdefmssSel" value="olaaaa"/>
+    <form method="post" on-submit="{{doSubmit}}">
     <div>
       <template repeat="{{ii in items | enumerate}}">
         <inventory-item item="{{ii.value}}" index="{{ii.index.toString()}}"></inventory-item>
