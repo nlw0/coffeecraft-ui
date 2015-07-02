@@ -1,14 +1,29 @@
 <link rel="import" href="../packages/polymer/polymer.html">
 <link rel="import" href="inventory_item.html">
+<link rel="import" href="packages/core_elements/core_icon_button.html">
+<link rel="import" href="packages/core_elements/core_iconset.html">
+<link rel="import" href="packages/core_elements/editor_icons.html">
+<link rel="import" href="packages/core_elements/core_iconset_svg.html">
 <polymer-element name="inventory-list">
   <template>
-    <form method="post" on-submit="{{doSubmit}}">
-    <div>
-      <template repeat="{{ii in items | enumerate}}">
-        <inventory-item item="{{ii.value}}" index="{{ii.index.toString()}}"></inventory-item>
-      </template>
-    </div>
-      <input type="submit" value="OK"/>
+    <div><h3>MONEY = {{money}}</h3></div>
+    <core-icon-button icon="star" on-click="{{mineCommand}}"><span>MINE</span></core-icon-button>
+    <core-icon-button icon="redo" on-click="{{craftCommand}}"><span>CRAFT</span></core-icon-button>
+    <core-icon-button icon="editor:attach-money" on-click="{{sellCommand}}"><span>SELL</span></core-icon-button>
+    <br/>
+    <form>
+      <div>
+        <template repeat="{{ii in items | enumerate}}">
+          <template if="{{ii.value!=null}}">
+            <inventory-item item="{{ii.value}}" index="{{ii.index.toString()}}"
+                            on-itemtoggle="{{handleItemToggle}}"></inventory-item>
+          </template>
+          <template if="{{ii.value==null}}">
+            <div style="width:7cm; height: 1.5cm; background-color:#ffddff">
+            </div>
+          </template>
+        </template>
+      </div>
     </form>
   </template>
   <script type="application/dart" src="inventory_list.dart"></script>

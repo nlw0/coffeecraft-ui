@@ -1,6 +1,5 @@
 library coffeecraft.web.models;
 
-import 'package:option/option.dart';
 import 'package:polymer/polymer.dart';
 import 'package:dartson/dartson.dart';
 import 'package:dartson/transformers/date_time.dart';

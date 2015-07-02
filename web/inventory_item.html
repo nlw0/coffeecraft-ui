@@ -1,18 +1,16 @@
 <link rel="import" href="../packages/polymer/polymer.html">
 <polymer-element name="inventory-item">
   <template>
-    <div>
+    <div style="width:7cm; height: 1.5cm; background-color:#ffffdd">
       <div style="display:inline-block">
-        <input type="checkbox" name="itemSel" value="{{index}}" checked="{{isChecked}}" />
+        <input type="checkbox" checked="{{isChecked}}" on-click="{{transmitState}}" />
       </div>
-      <div style="display:inline-block; width:5cm">
+      <div style="display:inline-block; width:5cm" on-click="{{doToggle}}">
         <h2>{{item.name}}</h2>
       </div>
       <div style="display:inline-block">
         ${{item.price}}
       </div>
-      <template if="{{isChecked}}"><div>oi!</div></template>
-      <template if="{{!isChecked}}"><div>ai?</div></template>
     </div>
   </template>
   <script type="application/dart" src="inventory_item.dart"></script>

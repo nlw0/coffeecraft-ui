@@ -13,11 +13,16 @@ class InventoryItem extends PolymerElement {
   InventoryItem.created() : super.created() {
   }
 
-  void oonClick(Event e, var detail, Node target) {
-    e.preventDefault();
-
-    print("OI");
-    print(coisa);
+  void transmitState() {
+    dispatchEvent(new CustomEvent("itemtoggle", detail: {"index": int.parse(index), "isChecked": isChecked}));
   }
 
+  void doToggle() {
+    if (isChecked == true)
+      isChecked = false;
+    else {
+      isChecked = true;
+    }
+    transmitState();
+  }
 }
