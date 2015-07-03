@@ -6,24 +6,30 @@
 <link rel="import" href="packages/core_elements/core_iconset_svg.html">
 <polymer-element name="inventory-list">
   <template>
-    <div><h3>MONEY = {{money}}</h3></div>
+    <div><h3>MONEY: ${{money}}</h3></div>
     <core-icon-button icon="star" on-click="{{mineCommand}}"><span>MINE</span></core-icon-button>
     <core-icon-button icon="redo" on-click="{{craftCommand}}"><span>CRAFT</span></core-icon-button>
     <core-icon-button icon="editor:attach-money" on-click="{{sellCommand}}"><span>SELL</span></core-icon-button>
     <br/>
     <form>
-      <div>
         <template repeat="{{ii in items | enumerate}}">
           <template if="{{ii.value!=null}}">
             <inventory-item item="{{ii.value}}" index="{{ii.index.toString()}}"
                             on-itemtoggle="{{handleItemToggle}}"></inventory-item>
           </template>
           <template if="{{ii.value==null}}">
-            <div style="width:7cm; height: 1.5cm; background-color:#ffddff">
+            <div style="width:7cm; height: 2cm; background-color:#ffddff; display:inline-block">
+              <div style="display:inline-block">
+              </div>
+              <div style="display:inline-block; width:5cm">
+                <h2>&nbsp;</h2>
+              </div>
+              <div style="display:inline-block">
+                &nbsp;
+              </div>
             </div>
           </template>
         </template>
-      </div>
     </form>
   </template>
   <script type="application/dart" src="inventory_list.dart"></script>

@@ -8,7 +8,7 @@ class InventoryItem extends PolymerElement {
   @published String index;
   @published CoffeeItem item;
 
-  @published bool isChecked;
+  @published bool isChecked=false;
 
   InventoryItem.created() : super.created() {
   }
