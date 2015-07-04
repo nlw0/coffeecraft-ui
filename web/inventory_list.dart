@@ -1,12 +1,7 @@
 import 'dart:html';
-import 'dart:math';
-
-import 'package:option/option.dart';
 
 import 'package:polymer/polymer.dart';
 import 'package:dartson/dartson.dart';
-
-import 'package:core_elements/core_input.dart';
 
 import 'coffee_item.dart';
 
@@ -23,8 +18,7 @@ class InventoryList extends PolymerElement {
 
   void loadData() {
     itemSelection = [];
-    var url = "http://localhost:8080/api/102";
-    //var url = "invdata.html";
+    var url = "/coffeecraft/api/user/102";
     HttpRequest.getString(url).then(onDataLoaded);
   }
 
@@ -49,18 +43,18 @@ class InventoryList extends PolymerElement {
   }
 
   void mineCommand() {
-    var url = "http://localhost:8080/api/102/mine";
+    var url = "/coffeecraft/api/user/102/mine";
     HttpRequest.request(url, method: 'POST').whenComplete(loadData);
   }
 
   void craftCommand() {
-    var url = "http://localhost:8080/api/102/craft";
+    var url = "/coffeecraft/api/user/102/craft";
     HttpRequest.request(url, method: 'POST', sendData: itemSelection.toString() + "\n", requestHeaders: {'Content-type': 'application/json'})
     .whenComplete(loadData);
   }
 
   void sellCommand() {
-    var url = "http://localhost:8080/api/102/sell";
+    var url = "/coffeecraft/api/user/102/sell";
     HttpRequest.request(url, method: 'POST', sendData: itemSelection.toString() + "\n", requestHeaders: {'Content-type': 'application/json'})
     .whenComplete(loadData);
   }
