@@ -2,14 +2,14 @@
 <link rel="import" href="packages/paper_elements/paper_checkbox.html">
 <polymer-element name="inventory-item">
   <template>
-    <div style="width:7cm; height: 2cm; background-color:#ffffdd; display:inline-block">
-      <div style="display:inline-block">
+    <div style="width:9cm; height: 2cm; background-color:#ffffdd; display:inline-block">
+      <div style="display:inline-block; width:1cm">
         <paper-checkbox checked="{{isChecked}}" on-click="{{transmitState}}"></paper-checkbox>
       </div>
-      <div style="display:inline-block; width:5cm" on-click="{{doToggle}}">
+      <div style="display:inline-block; width:6cm" on-click="{{doToggle}}">
         <h2>{{item.name}}</h2>
       </div>
-      <div style="display:inline-block">
+      <div style="display:inline-block; width:1cm">
         ${{item.price}}
       </div>
     </div>

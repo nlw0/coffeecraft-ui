@@ -7,8 +7,9 @@ import 'coffee_item.dart';
 
 @CustomTag('inventory-list')
 class InventoryList extends PolymerElement {
-  @observable List<CoffeeItem> items = toObservable([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]);
+  @observable List<CoffeeItem> items = toObservable([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]);
   @observable num money;
+  @observable int uid = 102;
 
   List<int> itemSelection = [];
 
@@ -18,14 +19,14 @@ class InventoryList extends PolymerElement {
 
   void loadData() {
     itemSelection = [];
-    var url = "/coffeecraft/api/user/102";
+    var url = "/coffeecraft/api/user/$uid";
     HttpRequest.getString(url).then(onDataLoaded);
   }
 
   void onDataLoaded(String responseText) {
     var dson = new Dartson.JSON();
 
-    items = toObservable([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]);
+    items = toObservable([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]);
 
     UserStateDto myCoffee = dson.decode(responseText, new UserStateDto());
     for (var aa in myCoffee.inventory) {
@@ -43,18 +44,18 @@ class InventoryList extends PolymerElement {
   }
 
   void mineCommand() {
-    var url = "/coffeecraft/api/user/102/mine";
+    var url = "/coffeecraft/api/user/$uid/mine";
     HttpRequest.request(url, method: 'POST').whenComplete(loadData);
   }
 
   void craftCommand() {
-    var url = "/coffeecraft/api/user/102/craft";
+    var url = "/coffeecraft/api/user/$uid/craft";
     HttpRequest.request(url, method: 'POST', sendData: itemSelection.toString() + "\n", requestHeaders: {'Content-type': 'application/json'})
     .whenComplete(loadData);
   }
 
   void sellCommand() {
-    var url = "/coffeecraft/api/user/102/sell";
+    var url = "/coffeecraft/api/user/$uid/sell";
     HttpRequest.request(url, method: 'POST', sendData: itemSelection.toString() + "\n", requestHeaders: {'Content-type': 'application/json'})
     .whenComplete(loadData);
   }

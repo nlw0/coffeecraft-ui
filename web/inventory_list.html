@@ -6,6 +6,7 @@
 <link rel="import" href="packages/core_elements/core_iconset_svg.html">
 <polymer-element name="inventory-list">
   <template>
+    <div><h3>USER: </h3><input type="text" value="{{uid}}" on-change="{{loadData}}" n/></div>
     <div><h3>MONEY: ${{money}}</h3></div>
     <core-icon-button icon="star" on-click="{{mineCommand}}"><span>MINE</span></core-icon-button>
     <core-icon-button icon="redo" on-click="{{craftCommand}}"><span>CRAFT</span></core-icon-button>
@@ -18,13 +19,12 @@
                             on-itemtoggle="{{handleItemToggle}}"></inventory-item>
           </template>
           <template if="{{ii.value==null}}">
-            <div style="width:7cm; height: 2cm; background-color:#ffddff; display:inline-block">
-              <div style="display:inline-block">
-              </div>
-              <div style="display:inline-block; width:5cm">
+            <div style="width:9cm; height: 2cm; background-color:#ffddff; display:inline-block">
+              <div style="display:inline-block; width:1cm"></div>
+              <div style="display:inline-block; width:6cm">
                 <h2>&nbsp;</h2>
               </div>
-              <div style="display:inline-block">
+              <div style="display:inline-block; width:1cm">
                 &nbsp;
               </div>
             </div>
